@@ -1,0 +1,173 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using eCommerce.Models
+@{
+    ViewData["Title"] = "Products Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Product
+
+<div class="flex-box container-fluid row justify-content-md-center container-my-5 col-xs-12 col-sm-6 col-md-8">
+    <div class="left row">
+        <div class="big-img col-md-5">
+            <img class="img-fluid rounded" src="@Url.Content(@Model.Picture)">
+        </div>
+        <div class="images">
+            <div class="med-img border-0 m-2 col-md-3">
+                <img class="img-fluid rounded" src="@Url.Content(@Model.Picture)" onclick="showImg(this.src)">
+            </div>
+            <div class="med-img border-0 m-2 col-md-3">
+                <img class="img-fluid rounded" src="@Url.Content(@Model.Picture)" onclick="showImg(this.src)">
+            </div>
+            <div class="med-img border-0 m-2 col-md-3">
+                <img class="img-fluid rounded" src="@Url.Content(@Model.Picture)" onclick="showImg(this.src)">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="right row justify-content-md-center col-xs-6 col-md-4">
+
+        <div class="pname fw-bolder p-2 m-0.25">@Model.ProductName</div>
+        <div class="p-1 m-0.25">Made in @Model.MadeIn !</div>
+        <div class="p-1 m-0.25">Type - @Model.ShoeType</div>
+        <div class="p-1 m-0.25">For @Model.Gender</div>
+        <div class="price fw-bold p-2 m-0.25 overflow-visible">Rs. @ViewBag.discountedAmt</div>
+        <div class="Prodesc p-1 m-1">@Model.Description</div>
+        <div class="UnitP p-1 m-1">Original cost of Rs. @Model.UnitPrice</div>
+        <div class="btn-box">
+            <a class="cart-btn btn shadow btn-dark border-0 ">Add to Cart</a>
+            <a class="buy-btn btn shadow btn-dark border-0">Buy Now</a>
+            <a class="shadow back-btn btn border-0 btn-dark" asp-area="Products" asp-controller="Home" asp-action="Index">Back</a>
+        </div>
+        <div class="p-1 m-1">Return before @Model.ReturnPolicy</div>
+        <div class="p-1 m-1">Has warranty of @Model.WarrantyPeriod</div>
+        <div class="p-1 m-1">Manufactured on @Model.ManufacturingDate</div>
+        <div class="">
+            
+        </div>
+    </div>
+</div>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .flex-box {
+        display: flex;
+        width: 1000px;
+        margin: 20px auto;
+    }
+
+    .right{
+        margin:auto
+    }
+
+    .left {
+        width: 40%;
+    }
+
+    .big-img {
+        width: 350px;
+        margin:auto;
+    }
+
+
+        .big-img img {
+            width: inherit;
+        }
+
+    .images {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 15px;
+        margin-top:auto
+    }
+
+        .med-img:hover img {
+            transform: scale(2);
+        }
+
+    .url {
+        font-size: 16px;
+        font-weight: 400;
+        color: rgb(0, 102, 255);
+    }
+
+    .pname {
+        font-size: 42px;
+        font-weight: 600;
+        margin-top: 40px;
+        margin-left: -10px;
+
+    }
+
+
+    .price {
+        font-size: 30px;
+        font-weight: 500;
+        margin: 10px;
+        margin-left:-5px;
+        
+    }
+
+    .psize {
+        width: 60px;
+        height: 30px;
+        border: 1px solid #ff5e00;
+        color: #000;
+        text-align: center;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+        .psize.active {
+            border-width: 1.5px;
+            color: #ff5e00;
+            font-weight: 500;
+        }
+
+
+
+    .btn-box {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom:5px;
+    }
+
+        .btn-box button {
+            font-size: 18px;
+            padding: 8px 25px;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: white;
+        }
+
+    .cart-btn {
+        
+        margin-right: 20px;
+        margin-left: -10px
+    }
+
+
+    .cart-btn:hover {
+        background-color: #ff3c10;
+    }
+
+    .buy-btn:hover {
+        background-color: #0067ff;
+    }
+    .back-btn{
+        margin-left: 20px;
+        text-align:center;
+    }  
+    .back-btn:hover{
+            background-color: #008000;
+    }
+            </style>
