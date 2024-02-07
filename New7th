@@ -1,0 +1,91 @@
+<th (click)="sortTable('employeeName')">Employee Name
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'employeeName' && isAscending, 'fa-arrow-down': sortedColumn === 'employeeName' && !isAscending}"></i>
+                </th>
+                <th (click)="sortTable('city')">Employee City
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'city' && isAscending, 'fa-arrow-down': sortedColumn === 'city' && !isAscending}"></i>
+                </th>
+                <th (click)="sortTable('email')">Email
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'email' && isAscending, 'fa-arrow-down': sortedColumn === 'email' && !isAscending}"></i>
+                </th>
+                <th (click)="sortTable('phone')">Employee Name
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'phone' && isAscending, 'fa-arrow-down': sortedColumn === 'phone' && !isAscending}"></i>
+                </th>
+                <th>Show Details</th>
+
+
+
+
+
+
+
+<th (click)="sortTable('eventCode')">Event Code
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'eventCode' && isAscending, 'fa-arrow-down': sortedColumn === 'eventCode' && !isAscending}"></i>
+                </th>
+                <th (click)="sortTable('eventName')">Event Name 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'eventName' && isAscending, 'fa-arrow-down': sortedColumn === 'eventName' && !isAscending}"></i>
+                  </th>
+                  <th (click)="sortTable('startDate')">Start Date 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'startDate' && isAscending, 'fa-arrow-down': sortedColumn === 'startDate' && !isAscending}"></i>
+                  </th>
+                  <th (click)="sortTable('fees')">Fees 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'fees' && isAscending, 'fa-arrow-down': sortedColumn === 'fees' && !isAscending}"></i>
+                  </th>
+
+
+
+
+
+<th (click)="sortTable('eventCode')">Event Code
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'eventCode' && isAscending, 'fa-arrow-down': sortedColumn === 'eventCode' && !isAscending}"></i>
+                </th>
+                <th (click)="sortTable('eventName')">Event Name 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'eventName' && isAscending, 'fa-arrow-down': sortedColumn === 'eventName' && !isAscending}"></i>
+                  </th>
+                  <th (click)="sortTable('startDate')">Start Date 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'startDate' && isAscending, 'fa-arrow-down': sortedColumn === 'startDate' && !isAscending}"></i>
+                  </th>
+                  <th (click)="sortTable('fees')">Fees 
+                    <i class="fa" [ngClass]="{'fa-arrow-up': sortedColumn === 'fees' && isAscending, 'fa-arrow-down': sortedColumn === 'fees' && !isAscending}"></i>
+                  </th>
+
+
+
+
+
+
+
+
+sortTable(column: keyof Employee) {
+    if (this.sortedColumn === column) {
+      this.isAscending = !this.isAscending;
+    } else {
+      this.sortedColumn = column;
+      this.isAscending = true;
+    }
+    this.employees.sort((a, b) => {
+      const aValue = this.sortedColumn ? a[this.sortedColumn] : undefined;
+      const bValue = this.sortedColumn ? b[this.sortedColumn] : undefined;
+
+      if (aValue !== undefined && bValue !== undefined) {
+        if (typeof aValue === 'string' && typeof bValue === 'string') {
+          return this.isAscending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        }
+        const aValueNumeric = Number(aValue);
+        const bValueNumeric = Number(bValue);
+
+        if (!isNaN(aValueNumeric) && !isNaN(bValueNumeric)) {
+          return this.isAscending ? aValueNumeric - bValueNumeric : bValueNumeric - aValueNumeric;
+        }
+      }
+
+      return 0;
+    });
+  }
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
